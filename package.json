@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "deploy": "next build && scp -r out/* root@107.174.181.105:/var/www/artifacts/$npm_package_name/",
+    "deploy": "git push origin main && ssh root@107.174.181.105 \"cd /tmp && rm -rf ai-infrastructure && git clone https://github.com/Mottodigitalrice/ai-infrastructure.git && cd ai-infrastructure && npm install --production=false && npx next build && mkdir -p /var/www/artifacts/ai-infrastructure && rm -rf /var/www/artifacts/ai-infrastructure/* && cp -r out/* /var/www/artifacts/ai-infrastructure/ && rm -rf /tmp/ai-infrastructure && echo DEPLOYED\"",
     "lint": "eslint"
   },
   "dependencies": {

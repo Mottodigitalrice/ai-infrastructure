@@ -42,16 +42,13 @@ npm run deploy       # Build + copy to VPS
 
 ## Deployment
 
-Static export goes to `out/`. Deploy to VPS:
-```bash
-# Build outputs to out/
-npm run build
+`npm run deploy` pushes to GitHub, then SSHs into the VPS to clone, build, and deploy. The build happens on the VPS to avoid local memory issues.
 
-# Deploy to VPS (adjust path per project)
-scp -r out/* root@107.174.181.105:/var/www/artifacts/PROJECT_NAME/
+```bash
+npm run deploy       # Push + build on VPS + deploy
 ```
 
-Caddy serves it at `https://vps.mottodigital.jp/artifacts/PROJECT_NAME/`
+Live at: `https://vps.mottodigital.jp/artifacts/ai-infrastructure/`
 
 ## Page Types (Examples)
 
